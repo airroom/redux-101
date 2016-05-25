@@ -22,7 +22,7 @@
           <h2><a href="https://www.youtube.com/watch?v=xsSnOQynTHs" target="_blank">React Conf: <br>Hot Reloading with Time Travel</a></h2>
           <p class="fragment">Lib que gerencia <em>um*</em> <code class="code">State</code> <strong>previsível</strong> e <strong>imutável</strong>
           <p class="fragment">...evitando complexidade</p>
-          <p class="fragment">...<em>à la</em> <code class="code">Flux</code></p>
+          <p class="fragment">...<em>à la</em> <code class="code">Flux</code> <small style="display: inline-block; vertical-align: baseline;" class="fragment">(sem Event Emiter)</small></p>
           <aside class="notes">
             Talk-driven development <br>
             State Container previsível, facil de entender <br>
@@ -30,18 +30,14 @@
           </aside>
         </section>
         <section>
-          <h2>Basicamente...</h2>
-          <pre class="pre-maluco"><code class="hljs javascript">function reducer(previousState, action) { 
-  /* marotagens() */ 
-  return newState; 
-}</code></pre>
-          <img class="fragment" src="images/caetano.jpg" style="width: 40%;" alt="">
-        </section>
-        <section>
           <h2>Redux Data Flow</h2>
           <div style="border-radius: 16px; background: rgba(255, 255, 255, 0.5); display: inline-block; text-align: center; padding: 0.2em; box-shadow: 0 0 12px white;">
             <img id="data-flow" src="images/data-flow.svg" style="display: block; margin: 0 auto; box-shadow: none; background: none; border: none; max-width: 100%;" alt="">
           </div>
+            <pre class="pre-maluco fragment"><code class="hljs javascript">function reducer(previousState, action) { 
+  /* marotagens() */ 
+  return newState; 
+}</code></pre>
         </section>
         <section>
           <h2>Os Três Princípios</h2>
@@ -49,6 +45,11 @@
           <p><code class="code">State is read-only</code></p>
           <p><code class="code">Changes are made with pure functions</code></p>
         </section>
+        <aside class="notes">
+          The state of your whole application is stored in an object tree within a single store. <br>
+          The only way to mutate the state is to emit an action, an object describing what happened.
+          To specify how the state tree is transformed by actions, you write pure reducers.
+        </aside>
         <section>
           <h2>Actions</h2>
           <p>Uma intenção de mudar o <code class="code">state</code>. Único <em>caminho</em> para a <code class="code">store</code>.</p>
