@@ -1,9 +1,9 @@
 @-webkit-keyframes wat {
 	0% {
-		transform: scale(1);
+		transform: translateZ(0) scale(1);
 	}
 	100% { 
-		transform: scale(.9);
+		transform: translateZ(0) scale(.9);
 	}
 }
 
@@ -20,9 +20,16 @@
     animation-fill-mode: forwards;
     animation-direction: alternate;
     transform: translate3d(0px, 0px, 0px);
+    -webkit-filter: drop-shadow(12px 12px 7px #000);
+    backface-visibility: hidden;
 }										
 
 .reveal .code { 
 	font-size: 1.2em; 
 	color: #E6E2AF;
 }
+
+.reveal .pre-maluco { display: inline-block; text-align: center; }
+.reveal .pre-maluco code { display: inline-block; text-align: left; }
+
+.data-flow #caixa1 { display: none; }

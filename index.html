@@ -25,18 +25,29 @@
           <p class="fragment">...<em>à la</em> <code class="code">Flux</code></p>
           <aside class="notes">
             Talk-driven development <br>
-            State Container previsível <br>
+            State Container previsível, facil de entender <br>
             Inspirado no Flux sem a complexidade
           </aside>
         </section>
         <section>
+          <h2>Basicamente...</h2>
+          <pre class="pre-maluco"><code class="hljs javascript">function reducer(previousState, action) { 
+  /* marotagens() */ 
+  return newState; 
+}</code></pre>
+          <img class="fragment" src="images/caetano.jpg" style="width: 40%;" alt="">
+        </section>
+        <section>
+          <h2>Redux Data Flow</h2>
+          <di style="border-radius: 16px; background: rgba(255, 255, 255, 0.5); display: inline-block; text-align: center; padding: 0.2em; box-shadow: 0 0 12px white;">
+            <img id="data-flow" src="images/data-flow.svg" style="display: block; margin: 0 auto; box-shadow: none; background: none; border: none; max-width: 100%;" alt="">
+          </div>
+        </section>
+        <!-- <section>
           <h2>Os Três Princípios</h2>
           <p><code class="code">Single Source of Truth</code></p>
           <p><code class="code">State is read-only</code></p>
           <p><code class="code">Changes are made with pure functions</code></p>
-          <aside class="notes">
-            Redux can be described in three fundamental principles:
-          </aside>
         </section>
         <section>
           <h2>Single source of truth</h2>
@@ -46,7 +57,7 @@
 {
   vampires: [{
     id: 1,
-    name: 'Tiago Vampirão',
+    name: 'Tiago Big Vampire',
     isCommunist: true
   }, {
     id: 2,
@@ -55,6 +66,10 @@
   }]
 }         </code></pre>
         </section>
+        <section>
+          <h2>State is read-only</h2>
+          <p></p>
+        </section> -->
       </div>
     </div>
 
