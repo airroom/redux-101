@@ -51,6 +51,7 @@
         </section>
         <section>
           <h2>Actions</h2>
+          <p>Uma intenção de mudar o <code class="code">state</code>. Único <em>caminho</em> para a <code class="code">store</code>.</p>
           <pre><code class="hljs javascript">let nextVampireId = 0;
 
 export const ADD_VAMPIRE = 'ADD_VAMPIRE';
@@ -60,16 +61,78 @@ export function addVampire(vamp) {
   /* Action */
   return { 
     type: ADD_VAMPIRE,
-    vampire: { 
+    payload: {
       id: nextVampireId++,
-     name: vamp
+      name: vamp
     }
  };
 }         </code></pre>
-          <pre class="fragment"><code class="hljs html">&lt;button onSubmit={dispatch(addVampire('Tiago'))}&gt;Add Vampire&lt;/button&gt;</code></pre>
+          <pre class="fragment"><code class="hljs html">&lt;button onClick={dispatch(addVampire('Tiago'))}&gt;Add Vampire&lt;/button&gt;</code></pre>
           <aside class="notes">
             Actions are payloads of information that send data from your application to your store. They are the only source of information for the store. You send them to the store using store.dispatch().
           </aside>
+        </section>
+        <section>
+          <h2>Reducers</h2>
+          <p>Altre o <code class="code">state</code> pelas <code class="code">Actions</code></p>
+          <pre><code class="hljs javascript">import { ADD_VAMPIRE } from './vampires.js';
+
+function vampiresReducer(state = [], action) {
+  switch (action.type) {
+    case ADD_VAMPIRE:
+      const { id, name } = action.payload;
+      return [
+        ...state,
+        { id, name }
+      ]
+    default:
+      return state;
+  }               
+}        </code></pre>
+        </section>
+        <section>
+          <h2>Store</h2>
+          <pre><code class="hljs javascript">import { createStore } from 'redux';
+import { vampiresReducer } from './reducers.js';
+
+let store = createStore(vampiresReducer);
+
+store.dispatch(actionMaluca('wat'));</code></pre>
+        </section>
+        <section>
+          <h2>Com o React</h2>
+          <pre><code class="hljs javascript">import { React } from 'redux';
+import ReactDOM from 'react-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import vampiresApp from './reducers.js';
+import App from './containers/App.js';
+
+let store = createStore(vampiresApp);
+
+ReactDOM.render(
+  &lt;Provider store={store}&gt;&lt;App /&gt;&lt;/Provider&gt;, document.getElementById('root')
+);
+          </code></pre>
+        </section>
+        <section data-background="images/master-hacker.gif">
+          <h1><code class="code">Code Time</code></h1>
+        </section>
+        <section>
+          <h2>Tips</h2>
+          <ul>
+            <li>Composition</li>
+            <li>Container vs COmponent</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Links</h2>
+          <p>
+            <a target="_blank" href="redux.js.org">Redux Docs</a>
+          </p>
+          <p>
+            <a target="_blank" href="https://egghead.io/lessons/javascript-redux-the-single-immutable-state-tree?series=getting-started-with-redux">Getting Started with Redux</a>
+          </p>
         </section>
     </div>
 
