@@ -39,38 +39,38 @@
         </section>
         <section>
           <h2>Redux Data Flow</h2>
-          <di style="border-radius: 16px; background: rgba(255, 255, 255, 0.5); display: inline-block; text-align: center; padding: 0.2em; box-shadow: 0 0 12px white;">
+          <div style="border-radius: 16px; background: rgba(255, 255, 255, 0.5); display: inline-block; text-align: center; padding: 0.2em; box-shadow: 0 0 12px white;">
             <img id="data-flow" src="images/data-flow.svg" style="display: block; margin: 0 auto; box-shadow: none; background: none; border: none; max-width: 100%;" alt="">
           </div>
         </section>
-        <!-- <section>
+        <section>
           <h2>Os Três Princípios</h2>
           <p><code class="code">Single Source of Truth</code></p>
           <p><code class="code">State is read-only</code></p>
           <p><code class="code">Changes are made with pure functions</code></p>
         </section>
         <section>
-          <h2>Single source of truth</h2>
-          <p>O <code class="code">State</code> está armezado numa única <code class="code">Store</code></p>
-          <pre><code class="hljs javascript">console.log(store.getState();
-// >>> 
-{
-  vampires: [{
-    id: 1,
-    name: 'Tiago Big Vampire',
-    isCommunist: true
-  }, {
-    id: 2,
-    name: 'Michael Fear',
-    isCommunist: false
-  }]
+          <h2>Actions</h2>
+          <pre><code class="hljs javascript">let nextVampireId = 0;
+
+export const ADD_VAMPIRE = 'ADD_VAMPIRE';
+
+/* Action Creator */
+export function addVampire(vamp) {
+  /* Action */
+  return { 
+    type: ADD_VAMPIRE,
+    vampire: { 
+      id: nextVampireId++,
+     name: vamp
+    }
+ };
 }         </code></pre>
+          <pre class="fragment"><code class="hljs html">&lt;button onSubmit={dispatch(addVampire('Tiago'))}&gt;Add Vampire&lt;/button&gt;</code></pre>
+          <aside class="notes">
+            Actions are payloads of information that send data from your application to your store. They are the only source of information for the store. You send them to the store using store.dispatch().
+          </aside>
         </section>
-        <section>
-          <h2>State is read-only</h2>
-          <p></p>
-        </section> -->
-      </div>
     </div>
 
     <script src="lib/js/head.min.js"></script>
