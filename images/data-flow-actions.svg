@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<?xml-stylesheet href="../css/redux-data-flow.css" type="text/css"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="redux-data-flow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-   width="840.949px" height="84.177px" viewBox="0 0 840.949 84.177" enable-background="new 0 0 840.949 84.177"
-   xml:space="preserve">
-<g>
+	 width="840.949px" height="84.177px" viewBox="0 0 840.949 84.177" enable-background="new 0 0 840.949 84.177"
+	 xml:space="preserve">
+<g class="redux-data-flow-actions">
   <g class="box-dispatch">
     <path class="box-dispatch" d="M279.331,50.339c6.644-3.472,14.457-7.168,24.349-8.886c-9.912-1.677-18.124-4.646-24.447-8.15
       c0.152,2.054,1.55,4.908,4.333,6.893l-114.326,0.661c-0.066,0.001-1.047-0.882-2.28-1.392l0.027,4.683

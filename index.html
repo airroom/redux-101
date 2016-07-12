@@ -19,10 +19,20 @@
           <h1>1<span style="color: #FF533D;">Ø</span>1</h1>
         </section>
         <section>
-          <h2><a href="https://www.youtube.com/watch?v=xsSnOQynTHs" target="_blank">React Conf: <br>Hot Reloading with Time Travel</a></h2>
-          <p class="fragment">Lib que gerencia <em>um*</em> <code class="code">State</code> <strong>previsível</strong> e <strong>imutável</strong>
-          <p class="fragment">...evitando complexidade</p>
-          <p class="fragment">...<em>à la</em> <code class="code">Flux</code> <small style="display: inline-block; vertical-align: baseline;" class="fragment">(sem Event Emiter)</small></p>
+          <h2>O que é o <code class="code">Redux</code>?</h2>
+          <!-- <figure>
+            <a href="https://www.youtube.com/watch?v=xsSnOQynTHs">
+              <img src="http://img.youtube.com/vi/xsSnOQynTHs/maxresdefault.jpg" style="max-width: 33%; ">
+            </a>
+          </figure>
+          <h2><a href="https://www.youtube.com/watch?v=xsSnOQynTHs" target="_blank">React Conf: <br>Hot Reloading with Time Travel</a></h2> -->
+          <p class="fragment">Lib que gerencia uma <code class="code">State</code> <strong>previsível</strong> e <strong>imutável</strong>
+          <p class="fragment"><code class="code">Single Source of Truth</code></p>
+          <p class="fragment"><code class="code">State is read-only</code></p>
+          <p class="fragment"><code class="code">Changes are made with pure functions</code></p>
+          <!-- <p class="fragment">...evitando complexidade</p> -->
+          <!-- <p class="fragment">...<em>à la</em> <code class="code">Flux</code> <small style="display: inline-block; vertical-align: baseline;" class="fragment">(sem Event Emiter)</small></p> -->
+          <!-- <p class="fragment">...impondo restrições.</p> -->
           <aside class="notes">
             Talk-driven development <br>
             State Container previsível, facil de entender <br>
@@ -31,19 +41,16 @@
         </section>
         <section>
           <h2>Redux Data Flow</h2>
-          <div style="border-radius: 16px; background: rgba(255, 255, 255, 0.5); display: inline-block; text-align: center; padding: 0.2em; box-shadow: 0 0 12px white;">
-            <img id="data-flow" src="images/data-flow.svg" style="display: block; margin: 0 auto; box-shadow: none; background: none; border: none; max-width: 100%;" alt="">
+          <div class="data-flow-wrap">
+            <img class="data-flow" src="images/data-flow.svg" alt="">
           </div>
-            <pre class="pre-maluco fragment"><code class="hljs javascript">function reducer(previousState, action) { 
+         <!--  <p class="fragment"><code class="code">Single Source of Truth</code></p>
+         <p class="fragment"><code class="code">State is read-only</code></p>
+         <p class="fragment"><code class="code">Changes are made with pure functions</code></p> -->
+            <!-- <pre class="pre-maluco fragment"><code class="hljs javascript">function reducer(previousState, action) { 
   /* marotagens() */ 
   return newState; 
-}</code></pre>
-        </section>
-        <section>
-          <h2>Os Três Princípios</h2>
-          <p><code class="code">Single Source of Truth</code></p>
-          <p><code class="code">State is read-only</code></p>
-          <p><code class="code">Changes are made with pure functions</code></p>
+}</code></pre> -->
         </section>
         <aside class="notes">
           The state of your whole application is stored in an object tree within a single store. <br>
@@ -53,6 +60,9 @@
         <section>
           <h2>Actions</h2>
           <p>Uma intenção de mudar o <code class="code">state</code>. Único <em>caminho</em> para a <code class="code">store</code>.</p>
+          <div class="data-flow-wrap">
+            <object class="actions-data-flow" type="image/svg+xml" data="images/data-flow-actions.svg"></object>
+          </div>
           <pre><code class="hljs javascript">let nextVampireId = 0;
 
 export const ADD_VAMPIRE = 'ADD_VAMPIRE';
@@ -75,10 +85,13 @@ export function addVampire(vamp) {
         </section>
         <section>
           <h2>Reducers</h2>
-          <p>Altre o <code class="code">state</code> pelas <code class="code">Actions</code></p>
+          <p>Altera o <code class="code">state</code> pelas <code class="code">Actions</code></p>
+          <div class="data-flow-wrap">
+            <object class="actions-data-flow" type="image/svg+xml" data="images/data-flow-reducers.svg"></object>
+          </div>
           <pre><code class="hljs javascript">import { ADD_VAMPIRE } from './vampires.js';
 
-function vampiresReducer(state = [], action) {
+export default function vampires(state = [], action) {
   switch (action.type) {
     case ADD_VAMPIRE:
       const { id, name } = action.payload;
@@ -93,14 +106,27 @@ function vampiresReducer(state = [], action) {
         </section>
         <section>
           <h2>Store</h2>
-          <pre><code class="hljs javascript">import { createStore } from 'redux';
-import { vampiresReducer } from './reducers.js';
+          <div class="data-flow-wrap">
+            <object class="actions-data-flow" type="image/svg+xml" data="images/data-flow-stores.svg"></object>
+          </div>
+          <pre><code class="hljs javascript">import { createStore, combineReducers } from 'redux';
+import { vampires } from './reducers.js';
 
-let store = createStore(vampiresReducer);
+let store = createStore(combineReducers({ vampires }));
 
-store.dispatch(actionMaluca('wat'));</code></pre>
+/* {
+  vampires: []  
+} */
+
+store.dispatch(addVampire('Temer'));
+
+/* {
+  vampires: [{ id: 1, name: 'Temer'}]  
+} */
+
+</code></pre>
         </section>
-        <section>
+        <!-- <section>
           <h2>Com o React</h2>
           <pre><code class="hljs javascript">import { React } from 'redux';
 import ReactDOM from 'react-dom';
@@ -115,17 +141,26 @@ ReactDOM.render(
   &lt;Provider store={store}&gt;&lt;App /&gt;&lt;/Provider&gt;, document.getElementById('root')
 );
           </code></pre>
-        </section>
+        </section> -->
         <section data-background="images/master-hacker.gif">
           <h1><code class="code">Code Time</code></h1>
         </section>
         <section>
-          <h2>Links</h2>
+          <h2>Links/Utils</h2>
+          <p>
+            <a href="https://www.youtube.com/watch?v=xsSnOQynTHs" target="_blank">React Conf: Hot Reloading with Time Travel</a>
+          </p>
+          <p>
+            <a href="https://github.com/paularmstrong/normalizr" target="_blank">Normalizr (Nested Entities)</a>
+          </p>
+          <p>
+            <a href="https://github.com/omnidan/redux-ignore" target="_blank">Redux Ignore</a>
+          </p>
           <p>
             <a target="_blank" href="redux.js.org">Redux Docs</a>
           </p>
           <p>
-            <a target="_blank" href="https://egghead.io/lessons/javascript-redux-the-single-immutable-state-tree?series=getting-started-with-redux">Getting Started with Redux</a>
+            <a target="_blank" href="https://egghead.io/lessons/javascript-redux-the-single-immutable-state-tree?series=getting-started-with-redux">Egghead: Getting Started with Redux</a>
           </p>
         </section>
     </div>

@@ -32,4 +32,27 @@
 .reveal .pre-maluco { display: inline-block; text-align: center; }
 .reveal .pre-maluco code { display: inline-block; text-align: left; }
 
-.data-flow #caixa1 { display: none; }
+/*.reveal .data-flow #caixa1 { display: none; }*/
+
+.reveal .color-yellow { color: #E6E2AF; }
+
+.reveal .data-flow-wrap { 
+	border-radius: 16px;
+	background: rgba(255, 255, 255, 0.5);
+	display: inline-block;
+	text-align: center;
+	padding: 0.2em;
+	box-shadow: 0 0 12px white;
+ }
+
+ .reveal .data-flow,
+ .reveal .data-flow-wrap svg,
+ .reveal .data-flow-wrap object,
+ .reveal .data-flow-wrap .data-flow {
+ 	display: block;
+ 	margin: 0 auto;
+ 	box-shadow: none;
+ 	background: none;
+ 	border: none;
+ 	max-width: 100%;
+ }

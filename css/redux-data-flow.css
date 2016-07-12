@@ -1,0 +1,17 @@
+.box-action { fill: #DFDFCB; }
+.box-action-chars path { fill: #DAAE9E; }
+.box-store { fill: #DFDFCB; }
+.box-store-chars path { fill: #DAAE9E; }
+.box-reducer { fill: #DFDFCB; }
+.box-reducer-chars path { fill: #DAAE9E; }
+.box-view { fill: #DFDFCB; }
+.box-view-chars path { fill: #DAAE9E; }
+
+.redux-data-flow-actions .box-action { fill: #225378; }
+.redux-data-flow-actions .box-action-chars path { fill: #F3FFE2;  }
+
+.redux-data-flow-reducers .box-reducer { fill: #1695A3; }
+.redux-data-flow-reducers .box-reducer-chars path { fill: #ACF0F2; }
+
+.redux-data-flow-stores .box-store { fill: #ACF0F2; }
+.redux-data-flow-stores .box-store-chars path { fill: #EB7F00; }
